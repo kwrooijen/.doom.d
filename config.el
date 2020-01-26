@@ -32,10 +32,9 @@
 ;; `nil' to disable it:
 (setq display-line-numbers-type 'relative)
 
-;; Broken https://github.com/hlissner/doom-emacs/issues/2396
-(setq neo-window-width 8)
+(setq neo-window-width 30)
 
-(setq doom-localleader-key "SPC j")
+(setq doom-localleader-key "'")
 
 ;; (setq magit-display-buffer-function #'magit-display-buffer-traditional)
 
@@ -58,13 +57,15 @@
 ;;
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
+(setq ivy-re-builders-alist
+      '((t . ivy--regex-ignore-order)))
 
-(add-to-list 'load-path "~/.doom.d/files")
+(add-to-list 'load-path "~/.doom.d/files/")
 
 (require 'multiple-cursors)
 (require 'evil)
-(require 'functions)
 (require 'keys)
+(require 'functions)
 (require 'package-lispy)
 (require 'package-clojure)
 
@@ -72,6 +73,10 @@
 (simpleclip-mode 1)
 (multiple-cursors-mode t)
 (winum-mode 1)
+
+;; Broken https://github.com/hlissner/doom-emacs/issues/2396
+(after! neotree
+  (advice-remove #'neo-util--set-window-width 'ignore))
 
 ;; Fix MC to work with Evil mode
 (let* ((build-dir (substitute-in-file-name "$HOME/.emacs.d/.local/straight/build/"))

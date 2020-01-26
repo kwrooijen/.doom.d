@@ -87,13 +87,11 @@
 (define-key key-translation-map (kbd "s-&") (kbd "M-&"))
 
 ;; Bind Keys
-(bind-key* "C-S-V" 'simpleclip-paste)
-(bind-key* "C-S-C" 'simpleclip-copy)
-(bind-key* "C-S-X" 'simpleclip-cut)
 (bind-key* "M-u" 'undo-tree-redo)
 (bind-key* "M-+" 'align-regexp)
 (bind-key* "M-%" 'anzu-query-replace)
 (bind-key* "M-C" 'capitalize-previous-word)
+
 (bind-key* "M-1" 'winum-select-window-1)
 (bind-key* "M-2" 'winum-select-window-2)
 (bind-key* "M-3" 'winum-select-window-3)
@@ -103,25 +101,14 @@
 (bind-key* "M-7" 'winum-select-window-7)
 (bind-key* "M-8" 'winum-select-window-8)
 (bind-key* "M-9" 'winum-select-window-9)
-(bind-key* "s-1" 'winum-select-window-1)
-(bind-key* "s-2" 'winum-select-window-2)
-(bind-key* "s-3" 'winum-select-window-3)
-(bind-key* "s-4" 'winum-select-window-4)
-(bind-key* "s-5" 'winum-select-window-5)
-(bind-key* "s-6" 'winum-select-window-6)
-(bind-key* "s-7" 'winum-select-window-7)
-(bind-key* "s-8" 'winum-select-window-8)
-(bind-key* "s-9" 'winum-select-window-9)
-(bind-key* "s-&" 'async-shell-command)
 
-(define-key evil-normal-state-map (kbd "<SPC>qq") 'undefined)
-(define-key evil-normal-state-map (kbd "q") 'evil-avy-goto-char)
-(evil-define-key 'insert company-active-map (kbd "C-k") 'company-select-previous)
+(bind-key* "s-&" 'async-shell-command)
 
 (bind-key* (kbd "M-J") 'mc/mark-next-like-this)
 (bind-key* (kbd "M-K") 'mc/mark-previous-like-this)
 
 (evil-define-key 'normal helm-map (kbd "<RET>") 'my/helm-exit-minibuffer)
+
 (key-chord-define-global "xs" 'evil-normal-state-and-save)
 
 (map! (:leader
