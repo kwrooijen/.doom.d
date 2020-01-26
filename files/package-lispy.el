@@ -1,4 +1,4 @@
-;;; ~/.doom.d/package-lispy.el -*- lexical-binding: t; -*-
+;;; ~/.doom.d/files/package-lispy.el -*- lexical-binding: t; -*-
 
 (require 'lispyville)
 (require 'lispy)

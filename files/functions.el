@@ -1,4 +1,4 @@
-;;; ~/.doom.d/functions.el -*- lexical-binding: t; -*-
+;;; ~/.doom.d/files/functions.el -*- lexical-binding: t; -*-
 
 (defmacro add-hook* (mode &rest body)
   `(add-hook ,mode (lambda () ,@body)))

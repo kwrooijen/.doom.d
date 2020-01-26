@@ -51,10 +51,12 @@
 ;; our package manager can't deal with; see raxod502/straight.el#279)
 ;(package! builtin-package :recipe (:branch "develop"))
 
+(straight-use-package 'cider)
+(straight-use-package 'highlight-parentheses)
 (straight-use-package 'key-chord)
 (straight-use-package 'simpleclip)
-(straight-use-package 'highlight-parentheses)
 (straight-use-package 'winum)
+(straight-use-package 'flycheck-clj-kondo)
 
-;; TODO Check if this is necessary
-(straight-use-package 'cider)
+(straight-use-package
+ '(mc :type git :host github :repo "kwrooijen/mc"))

@@ -1,4 +1,4 @@
-;;; ~/.doom.d/keys.el -*- lexical-binding: t; -*-
+;;; ~/.doom.d/files/keys.el -*- lexical-binding: t; -*-
 
 ;; Unbind all MacOS keys
 (define-key key-translation-map (kbd "s-q") (kbd "M-q"))
@@ -118,7 +118,14 @@
 (define-key evil-normal-state-map (kbd "q") 'evil-avy-goto-char)
 (evil-define-key 'insert company-active-map (kbd "C-k") 'company-select-previous)
 
+(bind-key* (kbd "M-J") 'mc/mark-next-like-this)
+(bind-key* (kbd "M-K") 'mc/mark-previous-like-this)
+
 (evil-define-key 'normal helm-map (kbd "<RET>") 'my/helm-exit-minibuffer)
 (key-chord-define-global "xs" 'evil-normal-state-and-save)
+
+(map! (:leader
+        (:map (global-mode-map)
+          "y" #'helm-show-kill-ring)))
 
 (provide 'keys)

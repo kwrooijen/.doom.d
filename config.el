@@ -30,11 +30,18 @@
 
 ;; If you want to change the style of line numbers, change this to `relative' or
 ;; `nil' to disable it:
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 
+;; Broken https://github.com/hlissner/doom-emacs/issues/2396
 (setq neo-window-width 8)
+
+(setq doom-localleader-key "SPC j")
+
 ;; (setq magit-display-buffer-function #'magit-display-buffer-traditional)
 
+;; This is originally set to "jk", but causes the "j" key to be inserted during
+;; `lispy-move-down`
+(setq evil-escape-key-sequence nil)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -52,40 +59,22 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 
+(add-to-list 'load-path "~/.doom.d/files")
 
-;; (straight-use-package 'lispy)
-;; (straight-use-package 'lispyville)
-(straight-use-package 'key-chord)
-(key-chord-define-global "xs" 'evil-normal-state-and-save)
-(key-chord-mode 1)
-
-(straight-use-package 'simpleclip)
-(simpleclip-mode 1)
-(straight-use-package 'highlight-parentheses)
-(straight-use-package 'cider)
-;; (straight-use-package 'flycheck-joker)
-
-(add-to-list 'load-path "~/.doom.d")
+(require 'multiple-cursors)
 (require 'evil)
 (require 'functions)
 (require 'keys)
 (require 'package-lispy)
-;; (require 'package-clojure)
+(require 'package-clojure)
 
-(straight-use-package
- '(mc :type git :host github :repo "kwrooijen/mc"))
-
+(key-chord-mode 1)
+(simpleclip-mode 1)
 (multiple-cursors-mode t)
-
-(bind-key* (kbd "M-J") 'mc/mark-next-like-this)
-(bind-key* (kbd "M-K") 'mc/mark-previous-like-this)
-
-;; This is originally set to "jk", but causes the "j" key to be inserted during
-;; `lispy-move-down`
-(setq evil-escape-key-sequence nil)
-
 (winum-mode 1)
 
-;; Fix MC
-(shell-command " cp $HOME/.emacs.d/.local/straight/build/mc/* $HOME/.emacs.d/.local/straight/build/multiple-cursors/*")
-(setq doom-localleader-key "SPC j")
+;; Fix MC to work with Evil mode
+(let* ((build-dir (substitute-in-file-name "$HOME/.emacs.d/.local/straight/build/"))
+       (default-directory build-dir))
+  (when (not (file-exists-p "multiple-cursors/mc-evil.el"))
+    (shell-command " cp mc/* multiple-cursors/*")))
