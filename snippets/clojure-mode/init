@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: init
+# key: init
+# condition: t
+# --
+(defmethod ig/init-key :$1 [_ opts]
+  $0)

@@ -19,6 +19,7 @@
 (add-hook* 'clojurescript-mode-hook
            (require 'flycheck-clj-kondo)
            (subword-mode -1)
+           (yas-minor-mode)
            (flycheck-mode)
            ;; Prevent issue company-mode issue:
            ;; https://github.com/clojure-emacs/cider/issues/2714
@@ -29,10 +30,12 @@
            (require 'flycheck-clj-kondo)
            (setq cider-auto-select-test-report-buffer nil)
            (subword-mode -1)
+           (yas-minor-mode)
            (clj-hide-namespace)
            (flycheck-mode))
 
 (define-key clojure-mode-map (kbd "M-:") 'clojure-eval-expression)
+(define-key clojure-mode-map [tab] 'company-complete-common)
 
 (define-clojure-indent
   (render 1)

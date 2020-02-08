@@ -102,6 +102,7 @@
 
      (lispyville--define-key 'normal (kbd "M-J") #'mc/mark-next-like-this)
      (lispyville--define-key 'normal (kbd "M-J") #'mc/mark-next-like-this)
+     (lispyville--define-key 'normal (kbd "M-i") #'tab-to-tab-stop)
 
      (define-key lispyville-mode-map (kbd "M-w") 'lispyville-yank)
      (define-key lispy-mode-map (kbd "s-a") 'lispy-left-insert)

@@ -115,4 +115,10 @@
         (:map (global-mode-map)
           "y" #'helm-show-kill-ring)))
 
+(map! :n [tab] 'indent-region
+      :i [tab] 'indent-region
+      :v [tab] 'indent-region
+      :n "F"   'evil-snipe-F
+      :n "f"   'evil-snipe-s)
+
 (provide 'keys)

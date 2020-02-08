@@ -57,6 +57,8 @@
 (straight-use-package 'simpleclip)
 (straight-use-package 'winum)
 (straight-use-package 'flycheck-clj-kondo)
+(straight-use-package 'bm)
+(straight-use-package 'helm)
 
 (straight-use-package
  '(mc :type git :host github :repo "kwrooijen/mc"))

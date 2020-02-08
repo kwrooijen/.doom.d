@@ -57,8 +57,8 @@
 ;;
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
-(setq ivy-re-builders-alist
-      '((t . ivy--regex-ignore-order)))
+;;
+(setq ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
 
 (add-to-list 'load-path "~/.doom.d/files/")
 
@@ -68,11 +68,13 @@
 (require 'functions)
 (require 'package-lispy)
 (require 'package-clojure)
+(require 'package-neotree)
 
 (key-chord-mode 1)
 (simpleclip-mode 1)
 (multiple-cursors-mode t)
 (winum-mode 1)
+(evil-snipe-mode -1)
 
 ;; Broken https://github.com/hlissner/doom-emacs/issues/2396
 (after! neotree
@@ -83,3 +85,5 @@
        (default-directory build-dir))
   (when (not (file-exists-p "multiple-cursors/mc-evil.el"))
     (shell-command " cp mc/* multiple-cursors/*")))
+
+(add-hook 'dired-mode-hook 'auto-revert-mode)
