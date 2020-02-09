@@ -1,7 +1,6 @@
-# -*- mode: snippet -*-
-# name: init
+# -*- coding: utf-8 -*-
+# name: ig/init-key
 # key: init
-# condition: t
 # --
 (defmethod ig/init-key :$1 [_ opts]
   $0)
