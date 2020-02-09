@@ -119,6 +119,9 @@
       :i [tab] 'indent-region
       :v [tab] 'indent-region
       :n "F"   'evil-snipe-F
-      :n "f"   'evil-snipe-s)
+      :i "C-'" 'yas-expand
+      :n "f"   'evil-snipe-s
+      :n "M-t" 'transpose-words
+      :i "M-t" 'transpose-words)
 
 (provide 'keys)
