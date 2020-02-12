@@ -87,3 +87,10 @@
     (shell-command " cp mc/* multiple-cursors/*")))
 
 (add-hook 'dired-mode-hook 'auto-revert-mode)
+
+;; Always center screen when searching
+(advice-add 'evil-ex-search-next :after
+            (lambda (&rest x) (evil-scroll-line-to-center (line-number-at-pos))))
+
+(advice-add 'evil-ex-search-previous :after
+            (lambda (&rest x) (evil-scroll-line-to-center (line-number-at-pos))))
