@@ -118,6 +118,7 @@
      (define-key lispy-mode-map (kbd "M-q") 'lispy-global-ace-paren)
      (lispy-define-key lispy-mode-map "M-]" 'lispy-reverse-slurp)
      (lispy-define-key lispy-mode-map "o" 'lispy-o)
+     (lispy-define-key lispy-mode-map "i" 'indent-sexp)
      (lispy-define-key lispy-mode-map "j" 'lispy-down)
      (lispy-define-key lispy-mode-map "e" 'lispy-minibuffer-eval)
      (lispy-define-key lispy-mode-map "x" 'lispy-maybe-delete)
