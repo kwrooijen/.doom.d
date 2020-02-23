@@ -118,10 +118,6 @@
 (map! :n [tab] 'indent-region
       :i [tab] 'indent-region
       :v [tab] 'indent-region
-      :n "F"   'evil-snipe-F
-      :i "C-'" 'yas-expand
-      :n "f"   'evil-snipe-s
-      :n "M-t" 'transpose-words
-      :i "M-t" 'transpose-words)
+      :i "C-'" 'yas-expand)
 
 (provide 'keys)
