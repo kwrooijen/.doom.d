@@ -100,6 +100,11 @@
      (lispyville--define-key 'insert
        (kbd "M-a") #'lispy-left-insert)
 
+     (lispyville--define-key 'insert
+       (kbd "M-t") #'transpose-words)
+     (lispyville--define-key 'normal
+       (kbd "M-t") #'transpose-words)
+
      (lispyville--define-key 'normal (kbd "M-J") #'mc/mark-next-like-this)
      (lispyville--define-key 'normal (kbd "M-J") #'mc/mark-next-like-this)
      (lispyville--define-key 'normal (kbd "M-i") #'tab-to-tab-stop)
