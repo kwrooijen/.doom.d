@@ -86,7 +86,9 @@
   (when (not (file-exists-p "multiple-cursors/mc-evil.el"))
     (shell-command " cp mc/* multiple-cursors/*")))
 
+;; Hooks
 (add-hook 'dired-mode-hook 'auto-revert-mode)
+(add-hook 'markdown-mode-hook 'ws-butler-mode)
 
 ;; Always center screen when searching
 (advice-add 'evil-ex-search-next :after
