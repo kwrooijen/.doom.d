@@ -113,11 +113,18 @@
 
 (map! (:leader
         (:map (global-mode-map)
-          "y" #'helm-show-kill-ring)))
+          "y" #'helm-show-kill-ring
+          "s s" #'helm-swoop)))
 
 (map! :n [tab] 'indent-region
       :i [tab] 'indent-region
       :v [tab] 'indent-region
       :i "C-'" 'yas-expand)
+
+(map! :n (kbd "M-SPC") 'just-one-space
+      :i (kbd "M-SPC") 'just-one-space
+      :v (kbd "M-SPC") 'just-one-space
+      ;; Doesn't work
+      :i (kbd "M-SPC") 'just-one-space)
 
 (provide 'keys)

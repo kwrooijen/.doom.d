@@ -97,6 +97,12 @@
 (advice-add 'evil-ex-search-previous :after
             (lambda (&rest x) (evil-scroll-line-to-center (line-number-at-pos))))
 
+(advice-add 'lispy-up :after
+            (lambda (&rest x) (evil-scroll-line-to-center (line-number-at-pos))))
+
+(advice-add 'lispy-down :after
+            (lambda (&rest x) (evil-scroll-line-to-center (line-number-at-pos))))
+
 ;; Brighter colors for searching, the default isn't very clear.
 (custom-set-faces
  `(lazy-highlight ((t (:background "#fffb8e"))))
