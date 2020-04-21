@@ -21,7 +21,9 @@
            (require 'flycheck-clj-kondo)
            (subword-mode -1)
            (yas-minor-mode)
+           (diff-hl-mode 1)
            (flycheck-mode)
+           (lispy-define-key lispy-mode-map "e" 'kwrooijen--lispy-eval)
            ;; Prevent issue company-mode issue:
            ;; https://github.com/clojure-emacs/cider/issues/2714
            (setq cider-enhanced-cljs-completion-p nil
@@ -31,9 +33,11 @@
            (require 'flycheck-clj-kondo)
            (setq cider-auto-select-test-report-buffer nil)
            (subword-mode -1)
+           (diff-hl-mode 1)
            (yas-minor-mode)
            (clj-hide-namespace)
-           (flycheck-mode))
+           (flycheck-mode)
+           (lispy-define-key lispy-mode-map "e" 'kwrooijen--lispy-eval))
 
 (define-key clojure-mode-map (kbd "M-:") 'clojure-eval-expression)
 (define-key clojure-mode-map [tab] 'company-complete-common)

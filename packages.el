@@ -51,6 +51,13 @@
 ;; our package manager can't deal with; see raxod502/straight.el#279)
 ;(package! builtin-package :recipe (:branch "develop"))
 
+
+(package! git-gutter :disable t)
+(package! git-gutter+ :disable t)
+(package! git-gutter-fringe :disable t)
+(package! git-gutter-fringe+ :disable t)
+(package! multiple-cursors :disable t)
+
 (straight-use-package 'cider)
 (straight-use-package 'highlight-parentheses)
 (straight-use-package 'key-chord)
@@ -64,3 +71,6 @@
 
 (straight-use-package
  '(mc :type git :host github :repo "kwrooijen/mc"))
+
+
+(straight-use-package 'diff-hl)

@@ -107,3 +107,16 @@
 (custom-set-faces
  `(lazy-highlight ((t (:background "#fffb8e"))))
  `(evil-ex-search ((t (:background "#fffb8e")))))
+
+(setq display-line-numbers-type nil)
+
+(require 'diff-hl-margin)
+(setq diff-hl-margin-symbols-alist
+ '((insert . "▍") (delete . "▍") (change . "▍") (unknown . "▍") (ignored . "▍")))
+
+(set-face-attribute 'diff-hl-margin-insert nil :foreground "#5be56b" :inherit nil)
+(set-face-attribute 'diff-hl-margin-delete nil :foreground "#e85555" :inherit nil)
+(set-face-attribute 'diff-hl-margin-change nil :foreground "#fcb75d" :inherit nil)
+
+(global-diff-hl-mode 1)
+(diff-hl-margin-mode 1)

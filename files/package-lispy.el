@@ -32,6 +32,15 @@
   (or (lispy-left-p)
       (lispy-right-p)))
 
+(defun kwrooijen--lispy-eval ()
+  (interactive)
+  (if (lispy-left-p)
+      (save-excursion
+        (lispy-different)
+        (cider-eval-last-sexp)
+        (lispy-different))
+    (cider-eval-last-sexp)))
+
 (defun lispy-left-insert ()
   (interactive)
   (when (not (lispy--mode-p))
@@ -39,6 +48,15 @@
   (when (not (lispy--mode-p))
     (beginning-of-defun))
   (evil-insert-state 1))
+
+;; (defun lispy-right-insert ()
+;;   (interactive)
+;;   (when (lispy-left-p)
+;;     (lispy-different))
+;;   (when (not (lispy--mode-p))
+;;     (lispy-left 1)
+;;     (lispy-different))
+;;   (evil-insert-state 1))
 
 (defun lispy-beginning-of-defun-insert ()
   (interactive)
@@ -100,6 +118,11 @@
      (lispyville--define-key 'insert
        (kbd "M-a") #'lispy-left-insert)
 
+     ;; (lispyville--define-key 'normal
+     ;;   (kbd "M-e") #'lispy-right-insert)
+     ;; (lispyville--define-key 'insert
+     ;;   (kbd "M-e") #'lispy-right-insert)
+
      (lispyville--define-key 'insert
        (kbd "M-t") #'transpose-words)
      (lispyville--define-key 'normal
@@ -108,6 +131,8 @@
      (lispyville--define-key 'normal (kbd "M-J") #'mc/mark-next-like-this)
      (lispyville--define-key 'normal (kbd "M-J") #'mc/mark-next-like-this)
      (lispyville--define-key 'normal (kbd "M-i") #'tab-to-tab-stop)
+     ;; (lispyville--define-key 'normal (kbd "C-]") #'paredit-forward-slurp-sexp)
+     ;; (lispyville--define-key 'normal (kbd "C-[") #'paredit-forward-barf-sexp)
 
      (define-key lispyville-mode-map (kbd "M-w") 'lispyville-yank)
      (define-key lispy-mode-map (kbd "s-a") 'lispy-left-insert)
