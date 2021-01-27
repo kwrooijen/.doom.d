@@ -61,6 +61,8 @@
 
 (add-to-list 'load-path (expand-file-name "files" "~/.doom.d"))
 
+(defun rainbow-delimiters-mode () "Prevent hook errors")
+
 (require 'kwrooijen-functions)
 (require 'kwrooijen-options)
 (require 'kwrooijen-keys)

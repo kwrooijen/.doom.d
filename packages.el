@@ -49,6 +49,8 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+(package! rainbow-delimiters :disable t)
+
 (package! multiple-cursors
   :recipe
   (:host github
