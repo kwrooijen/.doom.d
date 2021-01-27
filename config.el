@@ -1,11 +1,11 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
-;; refresh' after modifying this file!
+;; sync' after modifying this file!
 
 
-;; These are used for a number of things, particularly for GPG configuration,
-;; some email clients, file templates and snippets.
+;; Some functionality uses this to identify you, e.g. GPG configuration, email
+;; clients, file templates and snippets.
 (setq user-full-name "John Doe"
       user-mail-address "john@doe.com")
 
@@ -14,109 +14,57 @@
 ;;
 ;; + `doom-font'
 ;; + `doom-variable-pitch-font'
-;; + `doom-big-font' -- used for `doom-big-font-mode'
+;; + `doom-big-font' -- used for `doom-big-font-mode'; use this for
+;;   presentations or streaming.
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Fira Mono" :size 10))
+;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
+;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. These are the defaults.
-(setq doom-theme 'doom-one)
+;; `load-theme' function. This is the default:
+(setq doom-theme 'doom-moonlight)
 
-;; If you intend to use org, it is recommended you change this!
+;; If you use `org' and don't want your org files in the default location below,
+;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
-;; If you want to change the style of line numbers, change this to `relative' or
-;; `nil' to disable it:
-(setq display-line-numbers-type 'relative)
-
-(setq neo-window-width 30)
-
-(setq doom-localleader-key "'")
-
-;; (setq magit-display-buffer-function #'magit-display-buffer-traditional)
+;; This determines the style of line numbers in effect. If set to `nil', line
+;; numbers are disabled. For relative line numbers, set this to `relative'.
+(setq display-line-numbers-type t)
 
 ;; This is originally set to "jk", but causes the "j" key to be inserted during
 ;; `lispy-move-down`
 (setq evil-escape-key-sequence nil)
 
+(setq doom-leader-key "SPC"
+      doom-localleader-key "'")
+
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
-;; - `use-package' for configuring packages
+;; - `use-package!' for configuring packages
 ;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', where Emacs
-;;   looks when you load packages with `require' or `use-package'.
+;; - `add-load-path!' for adding directories to the `load-path', relative to
+;;   this file. Emacs searches the `load-path' when you load packages with
+;;   `require' or `use-package'.
 ;; - `map!' for binding new keys
 ;;
 ;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c g k').
+;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
 ;; This will open documentation for it, including demos of how they are used.
 ;;
-;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
+;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-;;
-(setq ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
 
-(add-to-list 'load-path "~/.doom.d/files/")
+(add-to-list 'load-path (expand-file-name "files" "~/.doom.d"))
 
-(require 'multiple-cursors)
-(require 'evil)
-(require 'keys)
-(require 'functions)
-(require 'package-lispy)
-(require 'package-clojure)
-(require 'package-neotree)
-
-(key-chord-mode 1)
-(simpleclip-mode 1)
-(multiple-cursors-mode t)
-(winum-mode 1)
-(evil-snipe-mode -1)
-
-;; Broken https://github.com/hlissner/doom-emacs/issues/2396
-(after! neotree
-  (advice-remove #'neo-util--set-window-width 'ignore))
-
-;; Fix MC to work with Evil mode
-(let* ((build-dir (substitute-in-file-name "$HOME/.emacs.d/.local/straight/build/"))
-       (default-directory build-dir))
-  (when (not (file-exists-p "multiple-cursors/mc-evil.el"))
-    (shell-command " cp mc/* multiple-cursors/*")))
-
-;; Hooks
-(add-hook 'dired-mode-hook 'auto-revert-mode)
-(add-hook 'markdown-mode-hook 'ws-butler-mode)
-
-;; Always center screen when searching
-(advice-add 'evil-ex-search-next :after
-            (lambda (&rest x) (evil-scroll-line-to-center (line-number-at-pos))))
-
-(advice-add 'evil-ex-search-previous :after
-            (lambda (&rest x) (evil-scroll-line-to-center (line-number-at-pos))))
-
-(advice-add 'lispy-up :after
-            (lambda (&rest x) (evil-scroll-line-to-center (line-number-at-pos))))
-
-(advice-add 'lispy-down :after
-            (lambda (&rest x) (evil-scroll-line-to-center (line-number-at-pos))))
-
-;; Brighter colors for searching, the default isn't very clear.
-(custom-set-faces
- `(lazy-highlight ((t (:background "#fffb8e"))))
- `(evil-ex-search ((t (:background "#fffb8e")))))
-
-(setq display-line-numbers-type nil)
-
-(require 'diff-hl-margin)
-(setq diff-hl-margin-symbols-alist
- '((insert . "▍") (delete . "▍") (change . "▍") (unknown . "▍") (ignored . "▍")))
-
-(set-face-attribute 'diff-hl-margin-insert nil :foreground "#5be56b" :inherit nil)
-(set-face-attribute 'diff-hl-margin-delete nil :foreground "#e85555" :inherit nil)
-(set-face-attribute 'diff-hl-margin-change nil :foreground "#fcb75d" :inherit nil)
-
-(global-diff-hl-mode 1)
-(diff-hl-margin-mode 1)
+(require 'kwrooijen-functions)
+(require 'kwrooijen-options)
+(require 'kwrooijen-keys)
+(require 'kwrooijen-productivity)
+(require 'kwrooijen-helm)
+(require 'kwrooijen-lispy)
+(require 'kwrooijen-evil)
