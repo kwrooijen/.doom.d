@@ -70,3 +70,4 @@
 (require 'kwrooijen-helm)
 (require 'kwrooijen-lispy)
 (require 'kwrooijen-evil)
+(require 'kwrooijen-clojure)
