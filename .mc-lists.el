@@ -123,6 +123,7 @@
         special-er/expand-region
         special-evil-insert-state
         special-indent-sexp
+        special-kwrooijen/lispy-delete-line
         special-lh-knight/body
         special-lispy-ace-char
         special-lispy-ace-paren
@@ -203,6 +204,7 @@
         special-special-lispy-move-right
         special-special-lispy-up-slurp
         tab-to-tab-stop
+        transpose-sexps
         transpose-words
         upcase-region
         wdired-finish-edit

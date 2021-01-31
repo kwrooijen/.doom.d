@@ -7,7 +7,8 @@
       "C-x M-e" #'replace-last-sexp
       "M-t" #'transpose-words
       "M-/" #'evilnc-comment-or-uncomment-lines
-      "M-%" #'anzu-query-replace)
+      "M-%" #'anzu-query-replace
+      "M-l" #'downcase-word)
 
 (map! :leader
  ;; :states '(normal visual)

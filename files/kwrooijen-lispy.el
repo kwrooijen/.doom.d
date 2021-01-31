@@ -9,10 +9,12 @@
   :config
   (lispyville--define-key 'normal (kbd "M-J") #'mc/mark-next-like-this)
   (lispyville--define-key 'normal (kbd "M-a") #'lispy-left-insert)
-  (lispyville--define-key 'normal (kbd "M-K") #'mc/mark-previous-like-this))
+  (lispyville--define-key 'normal (kbd "M-A") #'lispyville-insert-at-beginning-of-list)
+  (lispyville--define-key 'normal (kbd "M-K") #'mc/mark-previous-like-this)
+  (lispyville--define-key 'normal (kbd "M-i") #'iedit-mode))
 
 (use-package! iedit)
-(use-package! lispy)
+
 (use-package! lispy
   :config
   (defun lispy--clojure-middleware-load ())
